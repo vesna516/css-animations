@@ -1,0 +1,336 @@
+.day-night {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #91ceff 14%,#429ffd 100%);
+    
+    // Night sky
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, #34699a 14%,#113f67 100%);
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    // Night state
+    &.active {
+        &:before {
+            opacity: 1;
+        }
+        
+        .day-night__switcher:before {
+            transform: translateX(1.5em);
+        }
+        
+        .day-night__sun {
+            animation-name: sunDown;
+            animation-delay: 0s;
+        }
+        
+        .day-night__moon {
+            animation-name: moonUp;
+            animation-delay: 1.2s;
+            animation-duration: 1s;
+        }
+        
+        .day-night__stars {
+            circle {
+                animation-name: starsUp;
+                animation-duration: .5s;
+            }
+
+            .day-night {
+                &__star-1 {
+                    animation-delay: 4088ms;
+                }
+
+                &__star-2 {
+                    animation-delay: 4183ms;
+                }
+
+                &__star-3 {
+                    animation-delay: 5870ms;
+                }
+
+                &__star-4 {
+                    animation-delay: 4839ms;
+                }
+
+                &__star-5 {
+                    animation-delay: 5232ms;
+                }
+
+                &__star-6 {
+                    animation-delay: 4616ms;
+                }
+
+                &__star-7 {
+                    animation-delay: 4691ms;
+                }
+
+                &__star-8 {
+                    animation-delay: 5030ms;
+                }
+
+                &__star-9 {
+                    animation-delay: 3344ms;
+                }
+            }
+        }
+                
+        .day-night__sky {
+            opacity: 1;
+            animation-name: skyDown;
+            animation-delay: 0s;
+            animation-duration: .8s;
+        }
+        
+        .day-night__trees {
+            &-light {
+                fill: #63ABA1;
+            }
+
+            &-dark {
+                fill: #53583C;
+            }
+            
+            &-trunk {
+                fill: #59473c;
+            }
+
+            &-grass-light {
+                fill: #63ABA1;
+            }
+
+            &-grass-dark {
+                fill: #53583C;
+            }
+        }
+    }
+}
+
+.day-night__switcher {
+    box-sizing: border-box;
+    position: relative;
+    width: 3em;
+    height: 1.5em;
+    padding: .1em;
+    background: rgba(255, 255, 255, .7);
+    border-radius: 1em;
+    cursor: pointer;
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .6);
+    transition: all .2s;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 1.3em;
+        height: 1.3em;
+        background: #404b69;
+        border-radius: 50%;
+        transition: all .3s;
+    }
+}
+
+// Trees
+// ====================================================
+.day-night__trees {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 9em;
+    border-radius: 8px;
+    
+    polygon,
+    rect {
+        transition: all 1s;
+    }
+
+    &-light {
+        fill: #95ac66;
+    }
+
+    &-dark {
+        fill: #7f9058;
+    }
+            
+    &-trunk {
+        fill: #875b51;
+    }
+    
+    &-grass-light {
+        fill: #caed73;
+    }
+    
+    &-grass-dark {
+        fill: #aac36d;
+    }
+}
+
+// Sun
+// ====================================================
+.day-night__sun {
+    position: absolute;
+    top: .7em;
+    left: 3.6em;
+    width: 2.2em;
+    height: 2.2em;
+    background: url('images/day-night/img-dn-sun.svg') center no-repeat;
+    filter: drop-shadow( 0px 0px 10px rgba(254, 191, 78, 1));
+    animation-delay: .3s;
+    animation-duration: .6s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    
+    &_day {
+        opacity: 0;
+        animation-name: sunUp;
+    }
+}
+
+@keyframes sunUp {
+    0% {
+        transform: translateX(4em) translateY(5em);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes sunDown {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    
+    100% {
+        transform: translateX(-4em) translateY(5em);
+        opacity: 0;
+    }
+}
+
+// Moon
+// ====================================================
+.day-night__moon {
+    position: absolute;
+    top: .7em;
+    left: 3.6em;
+    width: 2.2em;
+    height: 2.2em;
+    background: url('images/day-night/img-dn-moon.svg') center no-repeat;
+    filter: drop-shadow( 0px 0px 5px rgba(255, 255, 255, .8));
+    opacity: 0;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    
+    &_day {
+        animation-name: down;		
+    }
+}
+
+@keyframes moonUp {
+    0% {
+        transform: translateY(1em);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes down {
+    0% {
+        opacity: 1;
+    }
+    
+    100% {
+        opacity: 0;
+    }
+}
+
+// Stars
+// ====================================================
+.day-night__stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9em;
+    filter: drop-shadow( 0px 0px 5px rgba(255, 255, 255, .8));
+    
+    circle {
+        opacity: 0;
+        animation-delay: 0s;
+        animation-duration: .8s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    
+    &_day circle {
+        animation-name: down;		
+    }
+}
+
+@keyframes starsUp {
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+// Sky
+// ====================================================
+.day-night__sky {
+    position: absolute;
+    top: 1.5em;
+    left: 1em;
+    width: 7em;
+    height: 2.1875em;
+    background: url('images/day-night/img-dn-sky.svg') center no-repeat;
+    opacity: 0;
+    animation-name: skyUp;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes skyUp {
+    0% {
+        transform: translateX(-1em);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes skyDown {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    100% {
+        transform: translateX(1em);
+        opacity: 0;
+    }
+}

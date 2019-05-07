@@ -1,0 +1,277 @@
+.seahorse {
+    background: radial-gradient(ellipse at center, #409d9b 14%,#034561 100%);
+}
+
+// Generate bubbles
+// ====================================================
+.seahorse__bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+[class^='seahorse__bubble-'] {
+    position: absolute;
+    animation-name: up;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, transparent 50%, #eef 90%, #eef 65%, transparent 70%);
+        border: 1px solid #eef;
+        border-radius: 50%;
+        animation-name: wobble;
+        animation-iteration-count: infinite;
+    }
+}
+
+.seahorse {
+    &__bubble-1 {
+        top: 123%;
+        left: 16%;
+        width: .87em;
+        height: .87em;
+        animation-duration: 5s;
+        animation-delay: 1530ms;
+
+        &:before {
+            animation-duration: 5s;
+        }
+    }
+
+    &__bubble-2 {
+        top: 149%;
+        left: 41%;
+        width: .94em;
+        height: .94em;
+        animation-duration: 3s;
+        animation-delay: 1598ms;
+
+        &:before {
+            animation-duration: 3s;
+        }
+    }
+
+    &__bubble-3 {
+        top: 149%;
+        left: 31%;
+        width: .59em;
+        height: .59em;
+        animation-duration: 6s;
+        animation-delay: 1316ms;
+
+        &:before {
+            animation-duration: 6s;
+        }
+    }
+
+    &__bubble-4 {
+        top: 110%;
+        left: 23%;
+        width: 1.03em;
+        height: 1.03em;
+        animation-duration: 5s;
+        animation-delay: 1570ms;
+
+        &:before {
+            animation-duration: 5s;
+        }
+    }
+
+    &__bubble-5 {
+        top: 137%;
+        left: 70%;
+        width: .6em;
+        height: .6em;
+        animation-duration: 3s;
+        animation-delay: 533ms;
+
+        &:before {
+            animation-duration: 3s;
+        }
+    }
+
+    &__bubble-6 {
+        top: 113%;
+        left: 70%;
+        width: .82em;
+        height: .82em;
+        animation-duration: 4s;
+        animation-delay: 973ms;
+
+        &:before {
+            animation-duration: 4s;
+        }
+    }
+
+    &__bubble-7 {
+        top: 115%;
+        left: 25%;
+        width: .87em;
+        height: .87em;
+        animation-duration: 2s;
+        animation-delay: 1662ms;
+
+        &:before {
+            animation-duration: 2s;
+        }
+    }
+
+    &__bubble-8 {
+        top: 120%;
+        left: 40%;
+        width: .69em;
+        height: .69em;
+        animation-duration: 3s;
+        animation-delay: 1131ms;
+
+        &:before {
+            animation-duration: 3s;
+        }
+    }
+
+    &__bubble-9 {
+        top: 144%;
+        left: 41%;
+        width: .58em;
+        height: .58em;
+        animation-duration: 3s;
+        animation-delay: 877ms;
+
+        &:before {
+            animation-duration: 3s;
+        }
+    }
+
+    &__bubble-10 {
+        top: 143%;
+        left: 74%;
+        width: 1.07em;
+        height: 1.07em;
+        animation-duration: 6s;
+        animation-delay: 607ms;
+
+        &:before {
+            animation-duration: 6s;
+        }
+    }
+}
+@for $i from 0 through 10 {
+    // $bubble-size: random(50, 120) / 100 * 1em;  
+    // $animation-duration: random(2, 6) * 1s;
+        
+    .seahorse__bubble-#{$i} {
+        // top: random(100, 150) * 1%;
+        // left: random(0, 100) * 1%;
+        // width: $bubble-size;
+        // height: $bubble-size;
+        // animation-duration: $animation-duration;
+        // animation-delay: random(3, 2000) * 1ms;
+        
+        &:before {
+            // animation-duration: $animation-duration;
+        }
+    }
+}
+
+@keyframes up {
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    15%, 85% {
+        opacity: 1;
+    }
+
+    66% {
+        transform: translateX(-1em);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(1em);
+        transform: translateY(-12em);
+    }
+}
+
+@keyframes wobble {
+    33% {
+        transform: translateX(-1em);
+    }
+    
+    66% {
+        transform: translateX(1em);
+    }
+}
+
+// Items
+// ====================================================
+.seahorse {
+    &__coral-red {
+        position: absolute;
+        bottom: -0.2em;
+        left: -1em;
+        width: 5em;
+        height: 5em;
+        background: url('images/seahorse/img-coral-red.svg') center no-repeat;
+    }
+
+    &__coral-blue {
+        position: absolute;
+        bottom: -0.2em;
+        left: 1em;
+        width: 6em;
+        height: 6em;
+        background: url('images/seahorse/img-coral-blue.svg') center no-repeat;
+    }
+
+    &__seaweed {
+        position: absolute;
+        bottom: -0.07em;
+        right: -1.3em;
+        width: 7em;
+        height: 7em;
+        background: url('images/seahorse/img-seaweed.svg') center no-repeat;
+    }
+
+    &__seahorse {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        width: 4em;
+        height: 4em;
+        background: url('images/seahorse/img-seahorse.svg') center no-repeat;
+        animation-name: seahorse;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes seahorse {
+    0% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    33% {
+        transform: rotate(7deg) translateY(0.3em);
+    }
+
+    66% {
+        transform: translateY(0.5em);
+    }
+
+    100% {
+        transform: rotate(-5deg) translateY(0);
+    }
+}

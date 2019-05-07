@@ -1,0 +1,21 @@
+{
+  "name": "css-animations",
+  "version": "1.0.0",
+  "description": "CSS Animations",
+  "author": "Lucy Zaytseva",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vesna516/css-animations.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.24.6",
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2"
+  }
+}
